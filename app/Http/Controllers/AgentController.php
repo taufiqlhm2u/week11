@@ -16,7 +16,7 @@ class AgentController extends Controller
      */
     public function index()
     {
-        $agent = Agent::where('id', '>', 10)->paginate(10);
+        $agent = Agent::paginate(10);
         $agent->getCollection()->transform(function ($a) {
             $a->desc = Str::limit($a->description, 50);
             return $a;
